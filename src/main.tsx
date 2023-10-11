@@ -1,14 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
-import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { CreateAccount, Layout, Links, Login, Preview, Profile } from './pages';
+import './index.css';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <Layout />,
+    children: [
+      { path: 'links', element: <Links /> },
+      { path: 'profile', element: <Profile /> },
+    ],
   },
+  { path: '/login', element: <Login /> },
+  { path: '/create-account', element: <CreateAccount /> },
+  { path: '/preview', element: <Preview /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
