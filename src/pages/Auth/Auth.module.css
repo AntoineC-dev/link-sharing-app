@@ -1,0 +1,20 @@
+.container {
+  width: min(100%, 30em);
+  min-height: 100vh;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  padding: var(--space-lg);
+
+  @media (min-width: 768px) {
+    justify-content: center;
+    gap: var(--space-4xl);
+  }
+}
+
+.logo {
+  @media (min-width: 768px) {
+    align-self: center;
+  }
+}

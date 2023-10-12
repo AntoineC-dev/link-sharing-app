@@ -1,12 +1,13 @@
 import { Outlet } from 'react-router-dom';
 import styles from './Auth.module.css';
+import Logo from '../../assets/logo-devlinks-large.svg?react';
 
 function Auth() {
   return (
-    <div className={styles.container}>
-      <h1>Auth</h1>
+    <main className={styles.container}>
+      <Logo className={styles.logo} />
       <Outlet />
-    </div>
+    </main>
   );
 }
 
