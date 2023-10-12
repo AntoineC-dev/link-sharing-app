@@ -1,1 +1,2 @@
-export { default as TextInputGroup } from './TextInputGroup/TextInputGroup';
+export { default as EmailInput } from './TextInput/EmailInput';
+export { default as PasswordInput } from './TextInput/PasswordInput';

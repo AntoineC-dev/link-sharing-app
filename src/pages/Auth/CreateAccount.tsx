@@ -2,7 +2,7 @@ import * as Ariakit from '@ariakit/react';
 import * as React from 'react';
 import styles from './Forms.module.css';
 import { Link } from 'react-router-dom';
-import { TextInputGroup } from '../../components';
+import { EmailInput, PasswordInput } from '../../components';
 
 function CreateAccount() {
   const form = Ariakit.useFormStore({
@@ -24,23 +24,24 @@ function CreateAccount() {
       </h1>
       <p className={styles.text}>Let’s get you started sharing your links!</p>
       <div className={styles.form}>
-        <TextInputGroup
+        <EmailInput
+          store={form}
           label="Email address"
           name={form.names.email}
-          variant="email"
-          inputProps={{ type: 'email', placeholder: 'e.g. alex@email.com', required: true }}
+          inputProps={{ type: 'email', placeholder: 'e.g. alex@email.com' }}
         />
-        <TextInputGroup
+        <PasswordInput
+          store={form}
           label="Password"
           name={form.names.password}
-          variant="password"
-          inputProps={{ type: 'password', placeholder: 'At least 8 characters', required: true, minLength: 8 }}
+          checkMinLength={true}
+          inputProps={{ type: 'password', placeholder: 'At least 8 characters' }}
         />
-        <TextInputGroup
+        <PasswordInput
+          store={form}
           label="Confirm password"
           name={form.names.passwordConfirm}
-          variant="password"
-          inputProps={{ type: 'password', placeholder: 'At least 8 characters', required: true }}
+          inputProps={{ type: 'password', placeholder: 'At least 8 characters' }}
         />
         <span className={styles.caption}>Password must contain at least 8 characters</span>
         <Ariakit.FormSubmit className={styles.submit} aria-disabled={!isValid}>

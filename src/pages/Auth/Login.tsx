@@ -2,7 +2,7 @@ import * as Ariakit from '@ariakit/react';
 import * as React from 'react';
 import styles from './Forms.module.css';
 import { Link } from 'react-router-dom';
-import { TextInputGroup } from '../../components';
+import { EmailInput, PasswordInput } from '../../components';
 
 function Login() {
   const form = Ariakit.useFormStore({
@@ -24,17 +24,17 @@ function Login() {
       </h1>
       <p className={styles.text}>Add your details below to get back into the app</p>
       <div className={styles.form}>
-        <TextInputGroup
+        <EmailInput
+          store={form}
           label="Email address"
           name={form.names.email}
-          variant="email"
-          inputProps={{ type: 'email', placeholder: 'e.g. alex@email.com', required: true }}
+          inputProps={{ type: 'email', placeholder: 'e.g. alex@email.com' }}
         />
-        <TextInputGroup
+        <PasswordInput
+          store={form}
           label="Password"
           name={form.names.password}
-          variant="password"
-          inputProps={{ type: 'password', placeholder: 'Enter your password', required: true }}
+          inputProps={{ type: 'password', placeholder: 'Enter your password' }}
         />
         <Ariakit.FormSubmit className={styles.submit} aria-disabled={!isValid}>
           Login
