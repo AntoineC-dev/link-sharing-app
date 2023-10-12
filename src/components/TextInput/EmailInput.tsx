@@ -1,4 +1,5 @@
 import * as Ariakit from '@ariakit/react';
+import * as React from 'react';
 import styles from './TextImput.module.css';
 import IconEmail from '../../assets/icon-email.svg?react';
 
@@ -12,19 +13,23 @@ interface EmailImputProps {
 const emailRegex = new RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/);
 
 function EmailImput({ inputProps, label, name, store }: EmailImputProps) {
+  const errors = store.useState((state) => state.errors);
+  const touched = store.useState((state) => state.touched);
+  const isInvalid = React.useMemo(() => {
+    return !!errors[name as string] && touched[name as string];
+  }, [errors, touched, name]);
   store.useValidate(() => {
     const value = store.getValue(name);
     if (value.length === 0) {
       store.setError(name, "Can't be empty");
-    }
-    if (!emailRegex.test(value)) {
+    } else if (!emailRegex.test(value)) {
       store.setError(name, 'Wrong format');
     }
   });
 
   return (
     <div className={styles.container}>
-      <Ariakit.FormLabel name={name} className={styles.label}>
+      <Ariakit.FormLabel name={name} className={styles.label} data-invalid={isInvalid}>
         {label}
       </Ariakit.FormLabel>
       <div className={styles.field}>

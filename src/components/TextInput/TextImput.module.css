@@ -8,6 +8,10 @@
   color: hsl(var(--clr-neutral-500));
   font-size: var(--fs-sm);
   font-weight: var(--fw-normal);
+
+  &[data-invalid='true'] {
+    color: hsl(var(--clr-error));
+  }
 }
 
 .field {
