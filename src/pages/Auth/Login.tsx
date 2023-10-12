@@ -5,24 +5,20 @@ import { Link } from 'react-router-dom';
 import { TextInputGroup } from '../../components';
 
 function Login() {
-  const form = Ariakit.useFormStore({ defaultValues: { email: '', password: '' } });
-  const values = form.useState((state) => state.values);
+  const form = Ariakit.useFormStore({
+    defaultValues: { email: '', password: '' },
+    defaultErrors: { email: "Can't be empty", password: "Can't be empty" },
+  });
   const errors = form.useState((state) => state.errors);
-  const [isValid, setIsValid] = React.useState(false);
+  const isValid = React.useMemo(() => Object.keys(errors).length === 0, [errors]);
 
   form.useSubmit(async (state) => {
     if (!isValid) return;
     alert(JSON.stringify(state.values));
   });
 
-  React.useEffect(() => {
-    const isFilled = Object.values(values).every((value) => value.length !== 0);
-    const hasNoError = Object.keys(errors).length === 0;
-    setIsValid(isFilled && hasNoError);
-  }, [errors, values]);
-
   return (
-    <Ariakit.Form store={form} aria-labelledby="login" validateOnBlur={false} className={styles.container}>
+    <Ariakit.Form store={form} aria-labelledby="login" className={styles.container}>
       <h1 id="login" className={styles.title}>
         Login
       </h1>
