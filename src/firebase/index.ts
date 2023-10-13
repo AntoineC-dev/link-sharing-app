@@ -1,1 +1,1 @@
-export { default as firebase } from './config';
+export * as firebaseAuth from './auth';
