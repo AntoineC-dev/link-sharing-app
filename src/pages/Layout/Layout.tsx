@@ -1,19 +1,18 @@
 import { firebaseAuth } from '../../firebase';
+import { useStore } from '../../stores';
 import styles from './Layout.module.css';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 
 function Layout() {
-  const navigate = useNavigate();
-  const handleLogout = async () => {
-    await firebaseAuth.logout();
-    navigate('/auth/login', { replace: true });
-  };
-  return (
+  const user = useStore((store) => store.user);
+  return user ? (
     <div className={styles.container}>
       <h1>Link Sharing App</h1>
-      <button onClick={handleLogout}>LOGOUT</button>
+      <button onClick={firebaseAuth.logout}>LOGOUT</button>
       <Outlet />
     </div>
+  ) : (
+    <Navigate to={'/auth'} replace={true} />
   );
 }
 

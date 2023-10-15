@@ -1,7 +1,7 @@
 import * as Ariakit from '@ariakit/react';
 import * as React from 'react';
 import styles from './Forms.module.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { EmailInput, PasswordInput } from '../../components';
 import { firebaseAuth } from '../../firebase';
 
@@ -13,16 +13,11 @@ function CreateAccount() {
   const errors = form.useState((state) => state.errors);
   const isValid = React.useMemo(() => Object.keys(errors).length === 0, [errors]);
 
-  const navigate = useNavigate();
-
   form.useSubmit(async (state) => {
     if (!isValid) return;
     const email = state.values.email;
     const password = state.values.password;
-    const isUser = await firebaseAuth.createAccount(email, password);
-    if (isUser) {
-      navigate('/', { replace: true });
-    }
+    await firebaseAuth.createAccount(email, password);
   });
 
   return (

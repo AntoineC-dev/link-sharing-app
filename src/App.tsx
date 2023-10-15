@@ -1,11 +1,24 @@
-import styles from './App.module.css';
+import { onAuthStateChanged } from 'firebase/auth';
+import * as React from 'react';
+import { Outlet } from 'react-router-dom';
+import { firebaseAuth } from './firebase';
+import { useStore } from './stores';
 
 function App() {
-  return (
-    <main className={styles.container}>
-      <h1>Link Sharing App</h1>
-    </main>
-  );
+  const setUser = useStore((store) => store.setUser);
+  React.useEffect(() => {
+    const listen = onAuthStateChanged(firebaseAuth.auth, (user) => {
+      if (user) {
+        console.log('AuthState: user');
+        setUser(user);
+      } else {
+        console.log('AuthState: null');
+        setUser(null);
+      }
+    });
+    return () => listen();
+  }, [setUser]);
+  return <Outlet />;
 }
 
 export default App;
