@@ -9,9 +9,10 @@ interface PasswordImputProps {
   name: Ariakit.FormInputProps['name'];
   store: Ariakit.FormStore;
   checkMinLength?: boolean;
+  compareName?: Ariakit.FormInputProps['name'];
 }
 
-function EmailImput({ inputProps, label, name, store, checkMinLength = false }: PasswordImputProps) {
+function EmailImput({ inputProps, label, name, store, checkMinLength = false, compareName }: PasswordImputProps) {
   const errors = store.useState((state) => state.errors);
   const touched = store.useState((state) => state.touched);
   const isInvalid = React.useMemo(() => {
@@ -23,6 +24,8 @@ function EmailImput({ inputProps, label, name, store, checkMinLength = false }: 
       store.setError(name, "Can't be empty");
     } else if (checkMinLength && value.length < 8) {
       store.setError(name, 'Please check again');
+    } else if (compareName && store.getValue(compareName) !== value) {
+      store.setError(name, "Passwords don't match");
     }
   });
 
