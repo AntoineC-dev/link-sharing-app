@@ -44,6 +44,7 @@ function CreateAccount() {
           store={form}
           label="Confirm password"
           name={form.names.passwordConfirm}
+          compareName={form.names.password}
           inputProps={{ type: 'password', placeholder: 'At least 8 characters' }}
         />
         <span className={styles.caption}>Password must contain at least 8 characters</span>
@@ -52,7 +53,7 @@ function CreateAccount() {
         </Ariakit.FormSubmit>
         <div className={styles.footer}>
           <span>Already have an account?</span>
-          <Link to={'../login'}>Login</Link>
+          <Link to={'/auth'}>Login</Link>
         </div>
       </div>
     </Ariakit.Form>

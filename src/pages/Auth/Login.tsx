@@ -44,7 +44,7 @@ function Login() {
         </Ariakit.FormSubmit>
         <div className={styles.footer}>
           <span>Don’t have an account?</span>
-          <Link to={'../create-account'}>Create account</Link>
+          <Link to={'create-account'}>Create account</Link>
         </div>
       </div>
     </Ariakit.Form>
