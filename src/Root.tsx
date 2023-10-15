@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { firebaseAuth } from './firebase';
 import { useStore } from './stores';
 
-function App() {
+function Root() {
   const setUser = useStore((store) => store.setUser);
   React.useEffect(() => {
     const listen = onAuthStateChanged(firebaseAuth.auth, (user) => {
@@ -21,4 +21,4 @@ function App() {
   return <Outlet />;
 }
 
-export default App;
+export default Root;

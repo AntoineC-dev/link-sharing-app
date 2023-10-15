@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Auth, CreateAccount, Layout, Links, Login, Preview, Profile } from './pages';
+import { App, Auth, CreateAccount, Links, Login, Preview, Profile } from './pages';
 import './index.css';
-import App from './App';
+import Root from './Root';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <Root />,
     children: [
       {
         path: 'app',
-        element: <Layout />,
+        element: <App />,
         children: [
           { index: true, element: <Links /> },
           { path: 'profile', element: <Profile /> },

@@ -1,9 +1,9 @@
 import { firebaseAuth } from '../../firebase';
 import { useStore } from '../../stores';
-import styles from './Layout.module.css';
+import styles from './App.module.css';
 import { Navigate, Outlet } from 'react-router-dom';
 
-function Layout() {
+function App() {
   const user = useStore((store) => store.user);
   return user ? (
     <div className={styles.container}>
@@ -16,4 +16,4 @@ function Layout() {
   );
 }
 
-export default Layout;
+export default App;
