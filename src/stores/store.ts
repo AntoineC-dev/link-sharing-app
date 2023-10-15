@@ -16,13 +16,18 @@ const useStore = create<Store>()((set) => ({
   setUser: (user) => set((state) => ({ ...state, user })),
   login: async (email, password) => {
     const error = await firebaseAuth.login(email, password);
-    if (error) toast.error(error);
+    if (error) return toast.error(error);
+    toast.success('Welcome back');
   },
   createAccount: async (email, password) => {
     const error = await firebaseAuth.createAccount(email, password);
-    if (error) toast.error(error);
+    if (error) return toast.error(error);
+    toast.success('Account successfully created');
   },
-  logout: () => firebaseAuth.logout(),
+  logout: async () => {
+    await firebaseAuth.logout();
+    toast.success('Successfully logged out');
+  },
 }));
 
 export default useStore;
