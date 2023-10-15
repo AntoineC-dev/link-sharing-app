@@ -3,7 +3,7 @@ import * as React from 'react';
 import styles from './Forms.module.css';
 import { Link } from 'react-router-dom';
 import { EmailInput, PasswordInput } from '../../components';
-import { firebaseAuth } from '../../firebase';
+import { useStore } from '../../stores';
 
 function Login() {
   const form = Ariakit.useFormStore({
@@ -12,12 +12,13 @@ function Login() {
   });
   const errors = form.useState((state) => state.errors);
   const isValid = React.useMemo(() => Object.keys(errors).length === 0, [errors]);
+  const login = useStore((store) => store.login);
 
   form.useSubmit(async (state) => {
     if (!isValid) return;
     const email = state.values.email;
     const password = state.values.password;
-    await firebaseAuth.login(email, password);
+    login(email, password);
   });
 
   return (

@@ -9,10 +9,8 @@ function Root() {
   React.useEffect(() => {
     const listen = onAuthStateChanged(firebaseAuth.auth, (user) => {
       if (user) {
-        console.log('AuthState: user');
         setUser(user);
       } else {
-        console.log('AuthState: null');
         setUser(null);
       }
     });
