@@ -1,0 +1,15 @@
+.container {
+  margin-bottom: var(--space-xl);
+
+  & > h1 {
+    color: hsl(var(--clr-neutral-500));
+    font-size: var(--fs-title);
+    font-weight: var(--fw-bold);
+    margin-bottom: var(--space-xs);
+  }
+
+  & > p {
+    font-size: var(--fs-base);
+    font-weight: var(--fw-normal);
+  }
+}

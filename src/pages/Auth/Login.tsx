@@ -2,7 +2,7 @@ import * as Ariakit from '@ariakit/react';
 import * as React from 'react';
 import styles from './Forms.module.css';
 import { Link } from 'react-router-dom';
-import { EmailInput, PasswordInput } from '../../components';
+import { EmailInput, PasswordInput, Title } from '../../components';
 import { useStore } from '../../stores';
 
 function Login() {
@@ -23,10 +23,7 @@ function Login() {
 
   return (
     <Ariakit.Form store={form} aria-labelledby="login" className={styles.container}>
-      <h1 id="login" className={styles.title}>
-        Login
-      </h1>
-      <p className={styles.text}>Add your details below to get back into the app</p>
+      <Title title="Login" text="Add your details below to get back into the app" titleProps={{ id: 'login' }} />
       <div className={styles.form}>
         <EmailInput
           store={form}

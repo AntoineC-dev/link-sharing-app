@@ -2,7 +2,7 @@ import * as Ariakit from '@ariakit/react';
 import * as React from 'react';
 import styles from './Forms.module.css';
 import { Link } from 'react-router-dom';
-import { EmailInput, PasswordInput } from '../../components';
+import { EmailInput, PasswordInput, Title } from '../../components';
 import { useStore } from '../../stores';
 
 function CreateAccount() {
@@ -23,10 +23,11 @@ function CreateAccount() {
 
   return (
     <Ariakit.Form store={form} aria-labelledby="create-account" validateOnBlur={false} className={styles.container}>
-      <h1 id="create-account" className={styles.title}>
-        Create account
-      </h1>
-      <p className={styles.text}>Let’s get you started sharing your links!</p>
+      <Title
+        title="Create account"
+        text="Let’s get you started sharing your links!"
+        titleProps={{ id: 'create-account' }}
+      />
       <div className={styles.form}>
         <EmailInput
           store={form}

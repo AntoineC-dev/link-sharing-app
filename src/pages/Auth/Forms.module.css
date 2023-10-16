@@ -1,16 +1,3 @@
-.title {
-  color: hsl(var(--clr-neutral-500));
-  font-size: var(--fs-title);
-  font-weight: var(--fw-bold);
-  margin-bottom: var(--space-xs);
-}
-
-.text {
-  font-size: var(--fs-base);
-  font-weight: var(--fw-normal);
-  margin-bottom: var(--space-xl);
-}
-
 .form {
   display: flex;
   flex-direction: column;
