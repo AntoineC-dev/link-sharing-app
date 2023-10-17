@@ -5,12 +5,12 @@ import { Navbar } from '../../components';
 
 function App() {
   const user = useStore((store) => store.user);
-  const logout = useStore((store) => store.logout);
   return user ? (
     <div className={styles.container}>
       <Navbar />
-      <button onClick={logout}>LOGOUT</button>
-      <Outlet />
+      <main className={styles.main}>
+        <Outlet />
+      </main>
     </div>
   ) : (
     <Navigate to={'/auth'} replace={true} />
