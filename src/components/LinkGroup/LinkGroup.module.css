@@ -1,0 +1,16 @@
+.top {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: var(--space-xs);
+
+  & > span {
+    font-size: var(--fs-base);
+    font-weight: var(--fw-bold);
+  }
+
+  & > button {
+    font-size: var(--fs-base);
+    font-weight: var(--fw-normal);
+  }
+}
