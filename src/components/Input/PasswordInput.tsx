@@ -1,6 +1,6 @@
 import * as Ariakit from '@ariakit/react';
 import * as React from 'react';
-import styles from './TextImput.module.css';
+import styles from './Imput.module.css';
 import IconPassword from '../../assets/icon-password.svg?react';
 
 interface PasswordImputProps {

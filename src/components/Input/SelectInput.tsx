@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as Ariakit from '@ariakit/react';
-import styles from './TextImput.module.css';
+import styles from './Imput.module.css';
 import { linkHelpers } from '../../helpers';
 import { TPlatform } from '../../types';
 import IconChevronDown from '../../assets/icon-chevron-down.svg?react';
