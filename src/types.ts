@@ -1,18 +1,6 @@
-export type TPlatform =
-  | 'github'
-  | 'frontendmentor'
-  | 'twitter'
-  | 'linkedin'
-  | 'youtube'
-  | 'facebook'
-  | 'twitch'
-  | 'devto'
-  | 'codewars'
-  | 'codepen'
-  | 'freecodecamp'
-  | 'gitlab'
-  | 'hashnode'
-  | 'stackoverflow';
+import { PLATFORMS } from './constants';
+
+export type TPlatform = (typeof PLATFORMS)[number];
 
 export type TLink = {
   uid: string;

@@ -1,32 +1,16 @@
 import * as React from 'react';
 import * as Ariakit from '@ariakit/react';
 import styles from './LinkForm.module.css';
-import { TLink, TPlatform } from '../../types';
-import IconDragAndDrop from '../../assets/icon-drag-and-drop.svg?react';
+import { TLink } from '../../types';
 import { useLinkStore } from '../../stores';
 import { LinkInput, SelectInput } from '..';
 import { linkHelpers } from '../../helpers';
+import { PLATFORMS } from '../../constants';
+import IconDragAndDrop from '../../assets/icon-drag-and-drop.svg?react';
 
 interface LinkFormProps extends TLink {
   index: number;
 }
-
-const PLATFORMS: TPlatform[] = [
-  'github',
-  'frontendmentor',
-  'twitter',
-  'linkedin',
-  'youtube',
-  'facebook',
-  'twitch',
-  'devto',
-  'codewars',
-  'codepen',
-  'freecodecamp',
-  'gitlab',
-  'hashnode',
-  'stackoverflow',
-];
 
 function LinkForm({ index, platform, uid, url }: LinkFormProps) {
   const updateLink = useLinkStore((store) => store.updateLink);
