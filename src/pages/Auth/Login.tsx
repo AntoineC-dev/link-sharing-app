@@ -2,7 +2,7 @@ import * as Ariakit from '@ariakit/react';
 import * as React from 'react';
 import styles from './Forms.module.css';
 import { Link } from 'react-router-dom';
-import { EmailInput, PasswordInput, Title } from '../../components';
+import { Button, EmailInput, PasswordInput, Title } from '../../components';
 import { useStore } from '../../stores';
 
 function Login() {
@@ -37,7 +37,7 @@ function Login() {
           name={form.names.password}
           inputProps={{ type: 'password', placeholder: 'Enter your password' }}
         />
-        <Ariakit.FormSubmit className={styles.submit} aria-disabled={!isValid}>
+        <Ariakit.FormSubmit render={<Button />} className={styles.submit} aria-disabled={!isValid}>
           Login
         </Ariakit.FormSubmit>
         <div className={styles.footer}>

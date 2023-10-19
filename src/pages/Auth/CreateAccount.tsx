@@ -2,7 +2,7 @@ import * as Ariakit from '@ariakit/react';
 import * as React from 'react';
 import styles from './Forms.module.css';
 import { Link } from 'react-router-dom';
-import { EmailInput, PasswordInput, Title } from '../../components';
+import { Button, EmailInput, PasswordInput, Title } from '../../components';
 import { useStore } from '../../stores';
 
 function CreateAccount() {
@@ -50,7 +50,7 @@ function CreateAccount() {
           inputProps={{ type: 'password', placeholder: 'At least 8 characters' }}
         />
         <span className={styles.caption}>Password must contain at least 8 characters</span>
-        <Ariakit.FormSubmit className={styles.submit} aria-disabled={!isValid}>
+        <Ariakit.FormSubmit render={<Button />} className={styles.submit} aria-disabled={!isValid}>
           Create new account
         </Ariakit.FormSubmit>
         <div className={styles.footer}>
