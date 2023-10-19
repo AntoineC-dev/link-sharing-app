@@ -1,4 +1,4 @@
-export type TSite =
+export type TPlatform =
   | 'github'
   | 'frontendmentor'
   | 'twitter'
@@ -16,6 +16,7 @@ export type TSite =
 
 export type TLink = {
   uid: string;
-  site: TSite;
+  platform: TPlatform;
   url: string;
+  order: number;
 };

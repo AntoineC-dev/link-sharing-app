@@ -1,35 +1,44 @@
 import { create } from 'zustand';
-import { TLink, TSite } from '../types';
+import { TLink, TPlatform } from '../types';
 import { nanoid } from 'nanoid';
 
 const INITIAL_LINKS: TLink[] = [
-  { uid: nanoid(), site: 'github', url: 'https://github.com/AntoineC-dev' },
-  { uid: nanoid(), site: 'frontendmentor', url: 'https://www.frontendmentor.io/profile/AntoineC-dev' },
+  { uid: nanoid(), platform: 'github', url: 'https://github.com/AntoineC-dev', order: 0 },
+  { uid: nanoid(), platform: 'frontendmentor', url: 'https://www.frontendmentor.io/profile/AntoineC-dev', order: 1 },
 ];
 
 type Store = {
   links: TLink[];
-  createLink: (site?: TSite, url?: string) => void;
-  updateLink: (uid: string, site: TSite, url: string) => void;
+  shouldSave: boolean;
+  createLink: (platform?: TPlatform, url?: string) => void;
+  updateLink: (uid: string, platform: TPlatform, url: string) => void;
   deleteLink: (uid: string) => void;
+  saveLinks: () => void;
 };
 
 const useLinkStore = create<Store>()((set) => ({
   links: INITIAL_LINKS,
-  createLink: (site = 'github', url = '') =>
+  shouldSave: false,
+  createLink: (platform = 'github', url = '') =>
     set((state) => {
       const uid = nanoid();
-      return { ...state, links: [...state.links, { uid, site, url }] };
+      return { ...state, links: [...state.links, { uid, platform, url, order: state.links.length }] };
     }),
-  updateLink: (uid, site, url) =>
+  updateLink: (uid, platform, url) =>
     set((state) => {
-      const links = state.links.map((link) => (link.uid === uid ? { ...link, site, url } : link));
-      return { ...state, links };
+      const links = state.links.map((link) => (link.uid === uid ? { ...link, platform, url } : link));
+      return { ...state, links, shouldSave: true };
     }),
   deleteLink: (uid) =>
     set((state) => {
-      const links = state.links.filter((link) => link.uid === uid);
+      const links = state.links.filter((link) => link.uid !== uid);
+      //TODO: Save changes in firestore
       return { ...state, links };
+    }),
+  saveLinks: () =>
+    set((state) => {
+      //TODO: Save changes in firestore
+      return { ...state, shouldSave: false };
     }),
 }));
 
