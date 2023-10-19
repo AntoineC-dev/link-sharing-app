@@ -33,21 +33,24 @@ function CreateAccount() {
           store={form}
           label="Email address"
           name={form.names.email}
-          inputProps={{ type: 'email', placeholder: 'e.g. alex@email.com' }}
+          type="email"
+          placeholder="e.g. alex@email.com"
         />
         <PasswordInput
           store={form}
           label="Password"
           name={form.names.password}
           checkMinLength={true}
-          inputProps={{ type: 'password', placeholder: 'At least 8 characters' }}
+          type="password"
+          placeholder="At least 8 characters"
         />
         <PasswordInput
           store={form}
           label="Confirm password"
           name={form.names.passwordConfirm}
           compareName={form.names.password}
-          inputProps={{ type: 'password', placeholder: 'At least 8 characters' }}
+          type="password"
+          placeholder="At least 8 characters"
         />
         <span className={styles.caption}>Password must contain at least 8 characters</span>
         <Ariakit.FormSubmit render={<Button />} className={styles.submit} aria-disabled={!isValid}>

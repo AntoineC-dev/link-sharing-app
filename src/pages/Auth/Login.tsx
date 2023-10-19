@@ -29,15 +29,17 @@ function Login() {
           store={form}
           label="Email address"
           name={form.names.email}
-          inputProps={{ type: 'email', placeholder: 'e.g. alex@email.com' }}
+          type="email"
+          placeholder="e.g. alex@email.com"
         />
         <PasswordInput
           store={form}
           label="Password"
           name={form.names.password}
-          inputProps={{ type: 'password', placeholder: 'Enter your password' }}
+          type="password"
+          placeholder="Enter your password"
         />
-        <Ariakit.FormSubmit render={<Button />} className={styles.submit} aria-disabled={!isValid}>
+        <Ariakit.FormSubmit render={Button} className={styles.submit} aria-disabled={!isValid}>
           Login
         </Ariakit.FormSubmit>
         <div className={styles.footer}>
