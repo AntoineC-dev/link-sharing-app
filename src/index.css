@@ -65,7 +65,7 @@
   }
 
   /* border */
-  --outline-focus: 4px dotted hsl(var(--clr-accent));
+  --outline-focus: 2px dotted hsl(var(--clr-neutral-500));
 
   /* border radius */
   --br-base: 0.5rem;

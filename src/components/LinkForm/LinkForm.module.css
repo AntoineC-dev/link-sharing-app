@@ -1,3 +1,10 @@
+.container {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
 .top {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -10,6 +17,7 @@
   }
 
   & > button {
+    cursor: pointer;
     font-size: var(--fs-base);
     font-weight: var(--fw-normal);
   }
