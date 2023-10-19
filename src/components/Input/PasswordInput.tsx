@@ -2,17 +2,16 @@ import * as Ariakit from '@ariakit/react';
 import * as React from 'react';
 import styles from './Imput.module.css';
 import IconPassword from '../../assets/icon-password.svg?react';
+import clsx from 'clsx';
 
-interface PasswordImputProps {
-  inputProps: Omit<Ariakit.FormInputProps, 'name' | 'className' | 'store'>;
+interface PasswordImputProps extends Ariakit.FormInputProps {
   label: string;
-  name: Ariakit.FormInputProps['name'];
   store: Ariakit.FormStore;
   checkMinLength?: boolean;
   compareName?: Ariakit.FormInputProps['name'];
 }
 
-function EmailImput({ inputProps, label, name, store, checkMinLength = false, compareName }: PasswordImputProps) {
+function EmailImput({ label, name, store, checkMinLength = false, compareName, ...props }: PasswordImputProps) {
   const errors = store.useState((state) => state.errors);
   const touched = store.useState((state) => state.touched);
   const isInvalid = React.useMemo(() => {
@@ -36,7 +35,7 @@ function EmailImput({ inputProps, label, name, store, checkMinLength = false, co
       </Ariakit.FormLabel>
       <div className={styles.field}>
         <IconPassword className={styles.icon} />
-        <Ariakit.FormInput store={store} name={name} className={styles.input} {...inputProps} />
+        <Ariakit.FormInput store={store} name={name} {...props} className={clsx(styles.input, props.className)} />
         <Ariakit.FormError name={name} className={styles.error} />
       </div>
     </div>
